@@ -13,12 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sets', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('name');
-            $table->timestamps();
-        });
+        if(!Schama::hasTable('sets')){
+            Schema::create('sets', function (Blueprint $table) {
+                $table->id()->unique();
+                $table->string('name')->unique();
+                $table->text('description')->nullable();
+                $table->timestamps();
+                $table->foreignId('user_id')->constrained();
+                $table->engine = 'InnoDB';
+            });
+        }
     }
 
     /**
