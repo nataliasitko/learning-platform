@@ -5,9 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @method static where(string $string, mixed $id)
+ */
+/**
+ * @method static create(array $array)
+ */
 class Set extends Model
 {
     use HasFactory;
+
+    public $timestamps = true;
 
     protected $fillable = [
         'name',
@@ -16,20 +24,21 @@ class Set extends Model
 
     protected $casts = [
         'created_at' => 'datetime',
+        'user_id' => 'int',
     ];
 
-    public function user()
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo('App\Model\User');
+        return $this->belongsTo(User::class);
     }
 
-    public function tag()
+    public function tag(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany('App\Model\Tag');
+        return $this->hasMany(Tag::class);
     }
 
-    public function term()
+    public function term(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany('App\Model\Terms');
+        return $this->hasMany(Term::class);
     }
 }
