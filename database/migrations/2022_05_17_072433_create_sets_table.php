@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        if(!Schama::hasTable('sets')){
+        if(!Schema::hasTable('sets')){
             Schema::create('sets', function (Blueprint $table) {
                 $table->id()->unique();
                 $table->string('name')->unique();
