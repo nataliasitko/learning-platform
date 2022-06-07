@@ -45,13 +45,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function sets()
+    public function sets(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany('App\Model\Sets');
+        return $this->hasMany(Set::class);
     }
 
-    public function group()
+    public function group(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo('App\Model\Group');
+        return $this->belongsTo(Group::class);
     }
 }
