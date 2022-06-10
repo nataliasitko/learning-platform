@@ -32,7 +32,7 @@
                     <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{{$user->name}}</h5>
 {{--                    <span class="text-sm text-gray-500 dark:text-gray-400">Visual Designer</span>--}}
                     <div class="flex mt-4 space-x-3 lg:mt-6">
-                        <a href="#" class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-white from-emerald-400 to-blue-400 bg-gradient-to-r rounded-lg hover:from-emerald-500 hover:to-blue-500 hover:bg-gradient-to-r  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add friend</a>
+                        <a href="{{route('profiles.showProfile')}}" class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-white from-emerald-400 to-blue-400 bg-gradient-to-r rounded-lg hover:from-emerald-500 hover:to-blue-500 hover:bg-gradient-to-r  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add friend</a>
                         <a href="#" class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700">Profile</a>
                     </div>
                 </div>
