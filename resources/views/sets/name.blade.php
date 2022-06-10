@@ -2,30 +2,29 @@
 
 @section('content')
 
+    <script src="https://cdn.tiny.cloud/1/tbxi4ctcaqb29ew3juifuua30bauk18o3kmnlnzjb6zi7cz9/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
     <script>
-        function handler() {
-            return {
-                fields: [],
-                addNewField() {
-                    this.fields.push({
-                        txt1: '',
-                        txt2: ''
-                    });
-                },
-                removeField(index) {
-                    this.fields.splice(index, 1);
-                }
-            }
-        }
+            tinymce.init({
+            selector: "#set-note",
+            plugins: "emoticons",
+            toolbar: "emoticons",
+                plugins: "save",
+                toolbar: "save",
+            toolbar_location: "bottom",
+            menubar: false,
+            toolbar: 'undo redo | styleselect | forecolor | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | link image | code'
+        });
     </script>
 
+
     <div class="min-h-screen font-sans">
-        <div class="max-w-md mx-auto py-8">
+        <div class="max-w-3xl mx-auto py-8">
             <div class="relative flex flex-wrap">
                 <div class="w-full relative">
                     <div class="mt-6">
                         <div class="text-center font-semibold text-black">
-                            Let's create a set!
+                            Let's create a note!
                         </div>
 
 
@@ -41,7 +40,7 @@
 {{--                                    <input type="text" name="name" id="task-name" class="form-control">--}}
 {{--                                </div>--}}
 
-                                <div class="form-group py-2 mx-auto max-w-2xl">
+                                <div class="form-group py-2 mx-auto max-w-md">
                                     <label for="name" class="px-1 text-md text-gray-600">Name</label>
                                     <input type="text" name="name" id="set-name" class=" form-control text-md block px-3
                                     py-2 rounded-lg w-full bg-white border-gray-100
@@ -58,10 +57,10 @@
 {{--                                    <input type="text" name="description" id="task-description" class="form-control">--}}
 {{--                                </div>--}}
 
-                                <div class="py-2 mx-auto max-w-2xl" x-data="{ show: true }">
+                                <div class="py-2 mx-auto max-w-md" x-data="{ show: true }">
                                     <div class="relative">
                                         <label for="set-description" class="px-1 text-md text-gray-600">Description
-                                            <textarea type="text" name="description" id="set-description" rows="6"
+                                            <textarea type="text" name="description" id="set-description" rows="4"
                                                       class="form-control text-md block px-3 py-2 rounded-lg w-full
                                                 bg-white border-gray-100 placeholder-gray-600 shadow-md
                                                 focus:placeholder-gray-500 focus:bg-white
@@ -71,47 +70,22 @@
                                 </div>
                             </div>
 
-
-                            <div class="row px-10" x-data="handler()">
-                                <div class="col">
-                                    <table class="table table-bordered align-items-center table-sm">
-                                        <thead class="thead-light">
-                                        <tr class="object-center">
-                                            <th></th>
-                                            <th class="px-16">Term</th>
-                                            <th class="px-11">Definition</th>
-                                            <th></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <template x-for="(field, index) in fields" :key="index">
-                                            <tr>
-                                                <td x-text="index + 1"></td>
-                                                <td><input x-model="field.txt1" type="text" name="txt1[]" class="form-control text-md block px-3
-                                    py-2 rounded-lg w-full bg-white border-gray-100
-                                    placeholder-gray-600 shadow-md focus:placeholder-gray-500
-                                    focus:bg-white focus:border-gray-600 focus:outline-none"></td>
-                                                <td><input x-model="field.txt2" type="text" name="txt2[]" class="form-control text-md block px-3
-                                    py-2 rounded-lg w-full bg-white border-gray-100
-                                    placeholder-gray-600 shadow-md focus:placeholder-gray-500
-                                    focus:bg-white focus:border-gray-600 focus:outline-none"></td>
-                                                <td><button type="button" class="btn btn-danger btn-small" @click="removeField(index)">&times;</button></td>
-                                            </tr>
-                                        </template>
-                                        </tbody>
-                                        <tfoot>
-                                        <tr>
-                                            <td colspan="4" class="text-right">
-                                                <button type="button" class="btn btn-info" @click="addNewField()">+ One more</button>
-                                            </td>
-                                        </tr>
-                                        </tfoot>
-                                    </table>
+                                <div class="form-group px-2 max-w-3xl mb-8">
+{{--                                    <div class="form-group py-2 px-4 bg-white rounded-b-lg dark:bg-gray-800">--}}
+{{--                                        <label for="set-note">--}}
+{{--                                        <textarea type="text" id="set-note" rows="8" class="form-control block px-0 w-full text-sm text-gray-800 bg-white border-0 dark:bg-gray-800 focus:ring-0 dark:text-white dark:placeholder-gray-400" placeholder="Your note..." required></textarea>--}}
+{{--                                        </label>--}}
+{{--                                    </div>--}}
+                                    <div class="relative">
+                                        <label for="set-note" class="px-1 text-md text-gray-600">Note
+                                            <textarea type="text" name="note" id="set-note" rows="4"
+                                                      class="form-control text-md block px-3 py-2 rounded-lg w-full
+                                                bg-white border-gray-100 placeholder-gray-600 shadow-md
+                                                focus:placeholder-gray-500 focus:bg-white
+                                                focus:border-gray-600 focus:outline-none"></textarea>
+                                        </label>
+                                    </div>
                                 </div>
-                            </div>
-
-
-
 
                             <!-- Add Task Button -->
                             <div class="form-group px-6">
