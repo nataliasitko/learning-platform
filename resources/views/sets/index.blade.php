@@ -28,27 +28,27 @@
         }
     </script>
 
-    <div class="mb-3 pt-5">
-        <form>
-            <select name="users" onchange="showTag(this.value)">
-                <option value="" class="text-md block rounded-lg w-full bg-white border-gray-100
-         placeholder-gray-600 shadow-md focus:placeholder-gray-500
-         focus:bg-white focus:border-gray-600 focus:outline-none">Select a tag:</option>
-                <option value="1" class="text-md block rounded-lg w-full bg-white border-gray-100
-         placeholder-gray-600 shadow-md focus:placeholder-gray-500
-         focus:bg-white focus:border-gray-600 focus:outline-none">1</option>
-                <option value="2" class="text-md block rounded-lg w-full bg-white border-gray-100
-         placeholder-gray-600 shadow-md focus:placeholder-gray-500
-         focus:bg-white focus:border-gray-600 focus:outline-none">2</option>
-                <option value="3" class="text-md block rounded-lg w-full bg-white border-gray-100
-         placeholder-gray-600 shadow-md focus:placeholder-gray-500
-         focus:bg-white focus:border-gray-600 focus:outline-none">3</option>
-                <option value="4" class="text-md block rounded-lg w-full bg-white border-gray-100
-         placeholder-gray-600 shadow-md focus:placeholder-gray-500
-         focus:bg-white focus:border-gray-600 focus:outline-none">4</option>
-            </select>
-        </form>
-    </div>
+{{--    <div class="mb-3 pt-5">--}}
+{{--        <form>--}}
+{{--            <select name="users" onchange="showTag(this.value)">--}}
+{{--                <option value="" class="text-md block rounded-lg w-full bg-white border-gray-100--}}
+{{--         placeholder-gray-600 shadow-md focus:placeholder-gray-500--}}
+{{--         focus:bg-white focus:border-gray-600 focus:outline-none">Select a tag:</option>--}}
+{{--                <option value="1" class="text-md block rounded-lg w-full bg-white border-gray-100--}}
+{{--         placeholder-gray-600 shadow-md focus:placeholder-gray-500--}}
+{{--         focus:bg-white focus:border-gray-600 focus:outline-none">1</option>--}}
+{{--                <option value="2" class="text-md block rounded-lg w-full bg-white border-gray-100--}}
+{{--         placeholder-gray-600 shadow-md focus:placeholder-gray-500--}}
+{{--         focus:bg-white focus:border-gray-600 focus:outline-none">2</option>--}}
+{{--                <option value="3" class="text-md block rounded-lg w-full bg-white border-gray-100--}}
+{{--         placeholder-gray-600 shadow-md focus:placeholder-gray-500--}}
+{{--         focus:bg-white focus:border-gray-600 focus:outline-none">3</option>--}}
+{{--                <option value="4" class="text-md block rounded-lg w-full bg-white border-gray-100--}}
+{{--         placeholder-gray-600 shadow-md focus:placeholder-gray-500--}}
+{{--         focus:bg-white focus:border-gray-600 focus:outline-none">4</option>--}}
+{{--            </select>--}}
+{{--        </form>--}}
+{{--    </div>--}}
 
 
         <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-cols-3 gap-5 lg:gap-8 pt-19">
@@ -97,11 +97,11 @@
                                 <span class="p-4 text-sm text-gray-500 dark:text-gray-400">{!! $set->note !!}</span>
                                 <div class="flex mt-4 space-x-3 lg:mt-6">
 {{--                                    <a class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-white from-pink-400 to-red-400 bg-gradient-to-r hover:from-pink-500 hover:to-red-500 hover:bg-gradient-to-r rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" href="{{route('sets.show'), $set->id}}">Show</a>--}}
-                                    <div class="inline-flex items-center py-2 mb-1 px-4 text-sm font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700">
+                                    <div class="inline-flex items-center py-2 mb-1 px-4 text-sm font-medium text-center from-pink-400 to-red-400 bg-gradient-to-r hover:from-pink-500 hover:to-red-500 hover:bg-gradient-to-r bg-white rounded-lg border border-gray-300 hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700">
                                         <form action="sets/{{ $set->id }}" method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
-                                            <button>Delete Note</button>
+                                            <button>Delete</button>
                                         </form>
                                     </div>
                                 </div>
