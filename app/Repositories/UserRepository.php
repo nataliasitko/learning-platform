@@ -18,9 +18,4 @@ class UserRepository
         return User::paginate(8); //asc default jest tez sortByDesc('field')
     }
 
-    public function thisUser()
-    {
-        return view('profiles.showMyProfile');
-    }
-
 }

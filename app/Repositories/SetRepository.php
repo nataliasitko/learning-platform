@@ -32,4 +32,21 @@ class SetRepository
             ->sortBy('created_at'); //asc default jest tez sortByDesc('field')
     }
 
+    /**
+     *
+    *  @param  Request  $request
+     * @param  Set  $set
+     * @return Response
+     */
+
+
+    public function destroy(Request $request, Set $set)
+    {
+        $this->authorize('destroy', $set);
+
+        $set->delete();
+
+        return redirect('sets.index');
+    }
+
 }

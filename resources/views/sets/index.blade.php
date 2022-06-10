@@ -3,20 +3,28 @@
 @section('content')
 
     <script>
-        function showTag(str) {
-            if (str == "") {
-                document.getElementById("txtHint").innerHTML = "";
-                return;
-            } else{
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        document.getElementById("txtHint").innerHTML = this.responseText;
-                    }
-                };
-                xmlhttp.open("GET","getuser.php?q="+str,true);
-                xmlhttp.send();
+        // function showTag(str) {
+        //     if (str == "") {
+        //         document.getElementById("txtHint").innerHTML = "";
+        //         return;
+        //     } else{
+        //         var xmlhttp = new XMLHttpRequest();
+        //         xmlhttp.onreadystatechange = function() {
+        //             if (this.readyState == 4 && this.status == 200) {
+        //                 document.getElementById("txtHint").innerHTML = this.responseText;
+        //             }
+        //         };
+        //         xmlhttp.open("GET","getTag.php?q="+str,true);
+        //         xmlhttp.send();
+        //     }
+        // }
+        function loadDoc() {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function() {
+                document.getElementById("demo").innerHTML = this.responseText;
             }
+            xhttp.open("GET", "ajax_info.txt", true);
+            xhttp.send();
         }
     </script>
 
@@ -43,7 +51,7 @@
     </div>
 
 
-        <div class="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 grid-cols-3 gap-5 lg:gap-8 pt-19">
+        <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-cols-3 gap-5 lg:gap-8 pt-19">
 
             @if (count($sets) == 0)
                 {{--    Dodaj nowy zestaw--}}
@@ -68,32 +76,34 @@
 
 
                 @foreach ($sets as $set)
-                        <div class="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                        <div class="py-8 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
                             <div class="flex justify-end px-4 pt-4">
-                                <button id="dropdownButton" data-dropdown-toggle="dropdown" class="hidden sm:inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
-                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"></path></svg>
-                                </button>
-                                <!-- Dropdown menu -->
-                                <div id="dropdown" class="hidden z-10 w-44 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700">
-                                    <ul class="py-1" aria-labelledby="dropdownButton">
-                                        <li>
-                                            <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Edit</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Export Data</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="block py-2 px-4 text-sm text-red-600 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Delete</a>
-                                        </li>
-                                    </ul>
-                                </div>
+{{--                                <button id="dropdownButton" data-dropdown-toggle="dropdown" class="hidden sm:inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">--}}
+{{--                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"></path></svg>--}}
+{{--                                </button>--}}
+{{--                                <!-- Dropdown menu -->--}}
+{{--                                <div id="dropdown" class="hidden z-10 w-44 text-base list-none bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700">--}}
+{{--                                    <ul class="py-1" aria-labelledby="dropdownButton">--}}
+{{--                                        <li>--}}
+{{--                                            --}}
+{{--                                        </li>--}}
+
+{{--                                    </ul>--}}
+{{--                                </div>--}}
                             </div>
                             <div class="flex flex-col items-center pb-10">
                                 <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">{{$set->name}}</h5>
                                 <span class="p-4 text-sm text-gray-500 dark:text-gray-400">{{$set->description}}</span>
+                                <span class="p-4 text-sm text-gray-500 dark:text-gray-400">{!! $set->note !!}</span>
                                 <div class="flex mt-4 space-x-3 lg:mt-6">
-                                    <a class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-white from-pink-400 to-red-400 bg-gradient-to-r hover:from-pink-500 hover:to-red-500 hover:bg-gradient-to-r rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" href="{{route('sets.show')}}">Show</a>
-                                    <a href="#" class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700">Edit</a>
+{{--                                    <a class="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-white from-pink-400 to-red-400 bg-gradient-to-r hover:from-pink-500 hover:to-red-500 hover:bg-gradient-to-r rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" href="{{route('sets.show'), $set->id}}">Show</a>--}}
+                                    <div class="inline-flex items-center py-2 mb-1 px-4 text-sm font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-300 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700 dark:focus:ring-gray-700">
+                                        <form action="sets/{{ $set->id }}" method="POST">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                            <button>Delete Note</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -116,11 +126,13 @@
 {{--                    </div>--}}
 
                 @endforeach
+
             @endif
-                <div class="py-8">
-                    {{ $sets->links() }}
-                </div>
+
+
 
         </div>
-
+    <div class="p-8">
+        {{ $sets->links() }}
+    </div>
 @endsection

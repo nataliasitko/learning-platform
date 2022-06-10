@@ -15,16 +15,12 @@ echo "<table>
 <th>Firstname</th>
 <th>Lastname</th>
 <th>Age</th>
-<th>Hometown</th>
-<th>Job</th>
 </tr>";
 while($row = mysqli_fetch_array($result)) {
     echo "<tr>";
-    echo "<td>" . $row['FirstName'] . "</td>";
-    echo "<td>" . $row['LastName'] . "</td>";
-    echo "<td>" . $row['Age'] . "</td>";
-    echo "<td>" . $row['Hometown'] . "</td>";
-    echo "<td>" . $row['Job'] . "</td>";
+    echo "<td>" . $row['Name'] . "</td>";
+    echo "<td>" . $row['Description'] . "</td>";
+    echo "<td>" . $row['Note'] . "</td>";
     echo "</tr>";
 }
 echo "</table>";

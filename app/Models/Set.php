@@ -20,6 +20,7 @@ class Set extends Model
     protected $fillable = [
         'name',
         'description',
+        'note',
     ];
 
     protected $casts = [
@@ -32,9 +33,9 @@ class Set extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function tag(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function tag(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->hasMany(Tag::class);
+        return $this->belongsTo(Tag::class);
     }
 
     public function term(): \Illuminate\Database\Eloquent\Relations\HasMany

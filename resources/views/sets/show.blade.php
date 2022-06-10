@@ -16,8 +16,8 @@
         <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
             <!--Left Col-->
             <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
-                <p class="uppercase tracking-loose w-full">CATEGORY1</p>
-                <h1 class="my-4 text-5xl font-bold leading-tight">SET1</h1>
+                <p class="uppercase tracking-loose w-full"></p>
+                <h1 class="my-4 text-5xl font-bold leading-tight">{{$id}}</h1>
                 <p class="leading-normal text-2xl mb-8">My first set</p>
 
 
