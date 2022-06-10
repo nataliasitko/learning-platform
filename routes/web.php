@@ -47,6 +47,15 @@ Route::middleware('auth') -> name('sets.') -> prefix('sets') -> group(function()
     Route::post('store', [SetController::class, 'store'])->name('store');
     Route::get('/discover',[SetController::class,'discover'])->name('discover');
     Route::get('/show/',[SetController::class,'show'])->name('show');
+//    Route::get('/{set}',[SetController::class,'destroy'])->name('destroy');
+//    Route::get('/{set}',[SetController::class,'destroy'])->name('destroy');
+
+});
+
+Route::middleware('auth') -> name('sets.') -> prefix('sets') -> group(function(){
+    Route::post('/search',[SetController::class,'search'])->name('search');
+    Route::get('/display',[SetController::class,'display'])->name('display');
+
 });
 
 //Route::middleware('auth') -> name('sets.') -> prefix('sets') -> group(function(){
@@ -56,6 +65,8 @@ Route::middleware('auth') -> name('sets.') -> prefix('sets') -> group(function()
 Route::middleware('auth') -> name('profiles.') -> prefix('profiles') -> group(function(){
     Route::get('/index',[UserController::class,'index'])->name('index');
     Route::get('/showMyProfile',[UserController::class,'showMyProfile'])->name('showMyProfile');
+    Route::get('/showProfile',[UserController::class,'showProfile'])->name('showProfile');
+    Route::get('/showProfile',[UserController::class,'showProfile'])->name('showProfile');
 });
 
 
